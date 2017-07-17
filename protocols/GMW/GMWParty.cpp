@@ -598,70 +598,6 @@ void GMWParty::recomputeAndGates(int firstAndGateToRecompute, vector<CBitVector>
     andGatesComputedCounter = recomputeAndGatesCounter;
     mtx.unlock();
 }
-/*
-void GMWParty::recomputeAndGates(Gate &recomputeGate, int firstAndGateToRecompute, vector<vector<byte>> &myD,
-                                 vector<vector<byte>> &myE, vector<byte> &otherD, vector<byte> &otherE, byte d,
-                                 byte e, byte z, int index, int i, vector<bool> & isWireReady, int & numAndGatesComputed, int first, int last) {
-    int recomputeAndGatesCounter;
-    for (int j=first; j < last; j++){
-            otherD.resize(myD[j].size());
-            otherE.resize(myE[j].size());
-            //The party with the lower id will send its bytes first
-            if (id < parties[j]->getID()) {
-                //send my d ,e
-                parties[j]->getChannel()->write(myD[j].data(), myD[j].size());
-                parties[j]->getChannel()->write(myE[j].data(), myE[j].size());
-
-                //receive other d, e
-                parties[j]->getChannel()->read(otherD.data(), otherD.size());
-                parties[j]->getChannel()->read(otherE.data(), otherE.size());
-            } else {
-                //receive other d, e
-                parties[j]->getChannel()->read(otherD.data(), otherD.size());
-                parties[j]->getChannel()->read(otherE.data(), otherE.size());
-
-                //send my d ,e
-                parties[j]->getChannel()->write(myD[j].data(), myD[j].size());
-                parties[j]->getChannel()->write(myE[j].data(), myE[j].size());
-            }
-
-            //Go on each and gate in the ot and compute its output share.
-            recomputeAndGatesCounter = 0;
-            for (int k=firstAndGateToRecompute; k < i; k++){
-                recomputeGate = circuit->getGates()[k];
-
-                if (recomputeGate.gateType == 2 || recomputeGate.gateType == 3) {
-
-                    //d = d1^d2
-                    d = myD[j][recomputeAndGatesCounter] ^ otherD[recomputeAndGatesCounter];
-                    //e = e1^e2
-                    e = myE[j][recomputeAndGatesCounter] ^ otherE[recomputeAndGatesCounter];
-                    //z = db ^ ea ^c ^ de
-                    index = j * circuit->getNrOfAndGates() + numAndGatesComputed + recomputeAndGatesCounter;
-                    z = d * bArray[index];
-                    z = z ^ (e * aArray[index]);
-                    z = z ^ cArray[index];
-                    if (id < parties[j]->getID()) {
-                        z = z ^ (d * e);
-                    }
-                    wiresValues[recomputeGate.outputIndex] ^= z;
-                    //wiresValues[recomputeGate.outputIndex] %= 2;
-                    isWireReady[recomputeGate.outputIndex] = true;
-                    recomputeAndGatesCounter++;
-
-                    //cout<<"wiresValues["<<recomputeGate.outputIndex<<"] = "<< (int)wiresValues[recomputeGate.outputIndex]<<endl;
-                }
-
-                if (recomputeGate.gateType == 3 && id == 0 && j==(last - 1)){
-                    cout<<"in or gate. flip output value after and"<<endl;
-                    wiresValues[recomputeGate.outputIndex] = 1 - wiresValues[recomputeGate.outputIndex];
-                }
-            }
-            myD[j].clear();
-            myE[j].clear();
-        }
-    numAndGatesComputed += recomputeAndGatesCounter;
-}*/
 
 vector<byte>& GMWParty::revealOutput() {
     vector<int> myOutputIndices = circuit->getPartyOutputs(id);
@@ -687,30 +623,30 @@ vector<byte>& GMWParty::revealOutput() {
     return output;
 }
 
-void GMWParty::revealOutputFromParty(vector<byte> & output, int first, int last){
+void GMWParty::revealOutputFromParty(vector<byte> & output, int first, int last) {
     vector<int> otherOutputsIndices;
-    vector<byte> otherOutputstoSend;
-    vector<byte> otherOutputstoReceive(output.size());
+    vector <byte> otherOutputstoSend;
+    vector <byte> otherOutputstoReceive(output.size());
 
-    for (int i=first; i < last; i++){
+    for (int i = first; i < last; i++) {
         otherOutputsIndices = circuit->getPartyOutputs(parties[i]->getID());
         otherOutputstoSend.resize(otherOutputsIndices.size());
 
-        for (int j=0; j<otherOutputsIndices.size(); j++){
+        for (int j = 0; j < otherOutputsIndices.size(); j++) {
             otherOutputstoSend[j] = wiresValues[otherOutputsIndices[j]];
         }
         if (id < parties[i]->getID()) {
             parties[i]->getChannel()->write(otherOutputstoSend.data(), otherOutputstoSend.size());
 
             parties[i]->getChannel()->read(otherOutputstoReceive.data(), otherOutputstoReceive.size());
-        } else{
+        } else {
             parties[i]->getChannel()->read(otherOutputstoReceive.data(), otherOutputstoReceive.size());
 
             parties[i]->getChannel()->write(otherOutputstoSend.data(), otherOutputstoSend.size());
 
         }
         mtx.lock();
-        for (int j=0; j<output.size() ; j++){
+        for (int j = 0; j < output.size(); j++) {
             output[j] ^= otherOutputstoReceive[j];
         }
         mtx.unlock();

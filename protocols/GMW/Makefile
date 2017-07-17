@@ -56,6 +56,7 @@ CMAKE_BINARY_DIR = /home/moriya/libscapi/protocols/GMW
 #=============================================================================
 # Targets provided globally by CMake.
 
+<<<<<<< HEAD
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -67,6 +68,8 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+=======
+>>>>>>> dev
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -78,6 +81,20 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
+<<<<<<< HEAD
+=======
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
+>>>>>>> dev
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/moriya/libscapi/protocols/GMW/CMakeFiles /home/moriya/libscapi/protocols/GMW/CMakeFiles/progress.marks
@@ -111,6 +128,22 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+<<<<<<< HEAD
+=======
+# Target rules for targets named gmw
+
+# Build rule for target.
+gmw: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gmw
+.PHONY : gmw
+
+# fast build rule for target.
+gmw/fast:
+	$(MAKE) -f CMakeFiles/gmw.dir/build.make CMakeFiles/gmw.dir/build
+.PHONY : gmw/fast
+
+#=============================================================================
+>>>>>>> dev
 # Target rules for targets named GMW
 
 # Build rule for target.
@@ -129,6 +162,10 @@ Circuit.o: Circuit.cpp.o
 
 # target to build an object file
 Circuit.cpp.o:
+<<<<<<< HEAD
+=======
+	$(MAKE) -f CMakeFiles/gmw.dir/build.make CMakeFiles/gmw.dir/Circuit.cpp.o
+>>>>>>> dev
 	$(MAKE) -f CMakeFiles/GMW.dir/build.make CMakeFiles/GMW.dir/Circuit.cpp.o
 .PHONY : Circuit.cpp.o
 
@@ -138,6 +175,10 @@ Circuit.i: Circuit.cpp.i
 
 # target to preprocess a source file
 Circuit.cpp.i:
+<<<<<<< HEAD
+=======
+	$(MAKE) -f CMakeFiles/gmw.dir/build.make CMakeFiles/gmw.dir/Circuit.cpp.i
+>>>>>>> dev
 	$(MAKE) -f CMakeFiles/GMW.dir/build.make CMakeFiles/GMW.dir/Circuit.cpp.i
 .PHONY : Circuit.cpp.i
 
@@ -147,6 +188,10 @@ Circuit.s: Circuit.cpp.s
 
 # target to generate assembly for a file
 Circuit.cpp.s:
+<<<<<<< HEAD
+=======
+	$(MAKE) -f CMakeFiles/gmw.dir/build.make CMakeFiles/gmw.dir/Circuit.cpp.s
+>>>>>>> dev
 	$(MAKE) -f CMakeFiles/GMW.dir/build.make CMakeFiles/GMW.dir/Circuit.cpp.s
 .PHONY : Circuit.cpp.s
 
@@ -156,6 +201,10 @@ GMWParty.o: GMWParty.cpp.o
 
 # target to build an object file
 GMWParty.cpp.o:
+<<<<<<< HEAD
+=======
+	$(MAKE) -f CMakeFiles/gmw.dir/build.make CMakeFiles/gmw.dir/GMWParty.cpp.o
+>>>>>>> dev
 	$(MAKE) -f CMakeFiles/GMW.dir/build.make CMakeFiles/GMW.dir/GMWParty.cpp.o
 .PHONY : GMWParty.cpp.o
 
@@ -165,6 +214,10 @@ GMWParty.i: GMWParty.cpp.i
 
 # target to preprocess a source file
 GMWParty.cpp.i:
+<<<<<<< HEAD
+=======
+	$(MAKE) -f CMakeFiles/gmw.dir/build.make CMakeFiles/gmw.dir/GMWParty.cpp.i
+>>>>>>> dev
 	$(MAKE) -f CMakeFiles/GMW.dir/build.make CMakeFiles/GMW.dir/GMWParty.cpp.i
 .PHONY : GMWParty.cpp.i
 
@@ -174,6 +227,10 @@ GMWParty.s: GMWParty.cpp.s
 
 # target to generate assembly for a file
 GMWParty.cpp.s:
+<<<<<<< HEAD
+=======
+	$(MAKE) -f CMakeFiles/gmw.dir/build.make CMakeFiles/gmw.dir/GMWParty.cpp.s
+>>>>>>> dev
 	$(MAKE) -f CMakeFiles/GMW.dir/build.make CMakeFiles/GMW.dir/GMWParty.cpp.s
 .PHONY : GMWParty.cpp.s
 
@@ -183,6 +240,10 @@ MPCCommunication.o: MPCCommunication.cpp.o
 
 # target to build an object file
 MPCCommunication.cpp.o:
+<<<<<<< HEAD
+=======
+	$(MAKE) -f CMakeFiles/gmw.dir/build.make CMakeFiles/gmw.dir/MPCCommunication.cpp.o
+>>>>>>> dev
 	$(MAKE) -f CMakeFiles/GMW.dir/build.make CMakeFiles/GMW.dir/MPCCommunication.cpp.o
 .PHONY : MPCCommunication.cpp.o
 
@@ -192,6 +253,10 @@ MPCCommunication.i: MPCCommunication.cpp.i
 
 # target to preprocess a source file
 MPCCommunication.cpp.i:
+<<<<<<< HEAD
+=======
+	$(MAKE) -f CMakeFiles/gmw.dir/build.make CMakeFiles/gmw.dir/MPCCommunication.cpp.i
+>>>>>>> dev
 	$(MAKE) -f CMakeFiles/GMW.dir/build.make CMakeFiles/GMW.dir/MPCCommunication.cpp.i
 .PHONY : MPCCommunication.cpp.i
 
@@ -201,6 +266,10 @@ MPCCommunication.s: MPCCommunication.cpp.s
 
 # target to generate assembly for a file
 MPCCommunication.cpp.s:
+<<<<<<< HEAD
+=======
+	$(MAKE) -f CMakeFiles/gmw.dir/build.make CMakeFiles/gmw.dir/MPCCommunication.cpp.s
+>>>>>>> dev
 	$(MAKE) -f CMakeFiles/GMW.dir/build.make CMakeFiles/GMW.dir/MPCCommunication.cpp.s
 .PHONY : MPCCommunication.cpp.s
 
@@ -210,6 +279,10 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
+<<<<<<< HEAD
+=======
+	$(MAKE) -f CMakeFiles/gmw.dir/build.make CMakeFiles/gmw.dir/main.cpp.o
+>>>>>>> dev
 	$(MAKE) -f CMakeFiles/GMW.dir/build.make CMakeFiles/GMW.dir/main.cpp.o
 .PHONY : main.cpp.o
 
@@ -219,6 +292,10 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
+<<<<<<< HEAD
+=======
+	$(MAKE) -f CMakeFiles/gmw.dir/build.make CMakeFiles/gmw.dir/main.cpp.i
+>>>>>>> dev
 	$(MAKE) -f CMakeFiles/GMW.dir/build.make CMakeFiles/GMW.dir/main.cpp.i
 .PHONY : main.cpp.i
 
@@ -228,6 +305,10 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
+<<<<<<< HEAD
+=======
+	$(MAKE) -f CMakeFiles/gmw.dir/build.make CMakeFiles/gmw.dir/main.cpp.s
+>>>>>>> dev
 	$(MAKE) -f CMakeFiles/GMW.dir/build.make CMakeFiles/GMW.dir/main.cpp.s
 .PHONY : main.cpp.s
 
@@ -237,8 +318,14 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+<<<<<<< HEAD
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+=======
+	@echo "... rebuild_cache"
+	@echo "... edit_cache"
+	@echo "... gmw"
+>>>>>>> dev
 	@echo "... GMW"
 	@echo "... Circuit.o"
 	@echo "... Circuit.i"

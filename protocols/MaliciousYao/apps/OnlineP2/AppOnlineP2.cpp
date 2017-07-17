@@ -23,10 +23,10 @@
 */
 
 const int PARTY = 2;
-const string HOME_DIR = "../../lib";
+const string HOME_DIR = "../..";
 //const string CIRCUIT_FILENAME = HOME_DIR + "/assets/circuits/AES/NigelAes.txt";
 //const string CIRCUIT_INPUT_FILENAME = HOME_DIR + "/assets/circuits/AES/AESPartyTwoInputs.txt";
-const string COMM_CONFIG_FILENAME = HOME_DIR + string("/assets/conf/PartiesConfig.txt");
+const string COMM_CONFIG_FILENAME = HOME_DIR + string("/lib/assets/conf/PartiesConfig.txt");
 	
 //const string CIRCUIT_CHEATING_RECOVERY = HOME_DIR + "/assets/circuits/CheatingRecovery/UnlockP1Input.txt";
 //const string BUCKETS_PREFIX_MAIN = HOME_DIR + "/data/P2/aes";
@@ -120,7 +120,7 @@ int main(int argc, char* argv[]) {
 	//set crypto primitives
 	CryptoPrimitives::setCryptoPrimitives(NISTEC_FILE_NAME);
 	CryptoPrimitives::setNumOfThreads(8);
-	auto input = CircuitInput::fromFile(CIRCUIT_INPUT_FILENAME);
+
 	//make circuit
 
 	auto mainBC = make_shared<BooleanCircuit>(new scannerpp::File(CIRCUIT_FILENAME));
@@ -179,6 +179,7 @@ int main(int argc, char* argv[]) {
         crCircuit[i] = shared_ptr<GarbledBooleanCircuit>(CheatingRecoveryCircuitCreator(CIRCUIT_CHEATING_RECOVERY, mainCircuit[0]->getNumberOfGates()).create());
     }
 
+    auto input = CircuitInput::fromFile(CIRCUIT_INPUT_FILENAME, mainCircuit[0]->getNumberOfInputs(2));
     ExecutionParameters mainExecution(mainBC, mainCircuit, N1, s1, B1, p1);
     ExecutionParameters crExecution(crBC, crCircuit, N2, s2, B2, p2);
     //ExecutionParameters mainExecution(nullptr, mainCircuit, N1, s1, B1, p1);

@@ -15,11 +15,11 @@ using namespace std;
 //party number
 const int PARTY = 1;
 
-const string HOME_DIR = "../../lib";
+const string HOME_DIR = "../..";
 
 //const string CIRCUIT_FILENAME = HOME_DIR + "/assets/circuits/AES/NigelAes.txt";
 //const string CIRCUIT_INPUT_FILENAME = HOME_DIR + "/assets/circuits/AES/AESPartyOneInputs.txt";
-const string COMM_CONFIG_FILENAME = HOME_DIR + string("/assets/conf/PartiesConfig.txt");
+const string COMM_CONFIG_FILENAME = HOME_DIR + string("/lib/assets/conf/PartiesConfig.txt");
 
 //const string CIRCUIT_CHEATING_RECOVERY = HOME_DIR + "/assets/circuits/CheatingRecovery/UnlockP1Input.txt";
 //const string BUCKETS_PREFIX_MAIN = HOME_DIR + "/data/P1/aes";
@@ -65,7 +65,6 @@ int main(int argc, char* argv[]) {
 	//set crypto primitives
 	CryptoPrimitives::setCryptoPrimitives(NISTEC_FILE_NAME);
 	CryptoPrimitives::setNumOfThreads(8);
-	auto input = CircuitInput::fromFile(CIRCUIT_INPUT_FILENAME);
 	//make circuit
 
 	
@@ -119,6 +118,7 @@ int main(int argc, char* argv[]) {
 		crBuckets[i] = BucketBundleList::loadBucketFromFile(BUCKETS_PREFIX_CR + "." + to_string(BUCKET_ID++) + ".cbundle");
 	}
 
+    auto input = CircuitInput::fromFile(CIRCUIT_INPUT_FILENAME, mainBuckets[0]->getBundleAt(0)->getNumberOfInputLabelsX());
 	// only now we start counting the running time
 	string tmp = "reset times";
 	cout << "tmp size = " << tmp.size() << endl;

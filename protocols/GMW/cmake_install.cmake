@@ -1,4 +1,4 @@
-# Install script for directory: /home/moriya/libscapi/protocols/GMW
+# Install script for directory: /home/liork/libscapi/protocols/GMW
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/moriya/libscapi/protocols/GMW/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/liork/libscapi/protocols/GMW/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
