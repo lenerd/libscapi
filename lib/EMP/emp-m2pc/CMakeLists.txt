@@ -7,6 +7,8 @@ set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin )
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} cmake/)
 
+FIND_PACKAGE(relic)
+INCLUDE_DIRECTORIES(${RELIC_INCLUDE_DIRS})
 FIND_PACKAGE(emp-ot)
 INCLUDE_DIRECTORIES(/usr/local/include/emp-tool /usr/local/include/emp-ot ${EMP-OT_INCLUDE_DIRS})
 
@@ -16,17 +18,17 @@ set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -std=c++0x")
 
 macro (add_test _name)
 	add_executable("test_${_name}" "test/${_name}.cpp" ${basics})
-	target_link_libraries("test_${_name}"  relic  ${OPENSSL_LIBRARIES} gmp ${EMP-TOOL_LIBRARIES})
+    target_link_libraries("test_${_name}"   ${RELIC_LIBRARIES}  ${OPENSSL_LIBRARIES} gmp ${EMP-TOOL_LIBRARIES})
 endmacro()
 
 macro (add_bench _name)
 	add_executable("bench_${_name}" "bench/${_name}.cpp" ${basics})
-	target_link_libraries("bench_${_name}"  relic  ${OPENSSL_LIBRARIES} gmp ${EMP-TOOL_LIBRARIES})
+	target_link_libraries("bench_${_name}"  ${RELIC_LIBRARIES}  ${OPENSSL_LIBRARIES} gmp ${EMP-TOOL_LIBRARIES})
 endmacro()
 
 macro (add_example _name)
 	add_executable("example_${_name}" "example/${_name}.cpp" ${basics})
-	target_link_libraries("example_${_name}"  relic  ${OPENSSL_LIBRARIES} gmp ${EMP-TOOL_LIBRARIES})
+    target_link_libraries("example_${_name}"  ${RELIC_LIBRARIES}  ${OPENSSL_LIBRARIES} gmp ${EMP-TOOL_LIBRARIES})
 endmacro()
 
 add_test (mal)
