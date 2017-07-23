@@ -34,7 +34,7 @@ OBJECTS_OT=ot/*.o
 # includes
 MIRACL_PATH=-I$(includedir)
 OPENSSL_INCLUDES=-I$(prefix)/ssl/include
-INCLUDE=-I.. $(MIRACL_PATH)
+INCLUDE=-I.. $(MIRACL_PATH) -I/usr/include/openssl-1.0
 
 ## targets ##
 all: ${OT_LIBRARY}

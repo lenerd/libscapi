@@ -47,7 +47,7 @@ OBJECTS_OT=ot/*.o
 
 MIRACL_INCLUDES=-I$(prefix)/include
 OPENSSL_INCLUDES=-I$(prefix)/ssl/include
-INCLUDE=-I.. $(OPENSSL_INCLUDES) $(MIRACL_INCLUDES)
+INCLUDE=-I.. $(OPENSSL_INCLUDES) $(MIRACL_INCLUDES) -I/usr/include/openssl-1.0
 
 ## targets ##
 
